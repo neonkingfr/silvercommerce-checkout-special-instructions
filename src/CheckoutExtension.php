@@ -21,20 +21,29 @@ class CheckoutExtension extends Extension
     {
         $fields = $form->Fields();
 
-        $fields->insertAfter(
-            'DuplicateDelivery',
-            TextareaField::create(
-                'SpecialInstructions',
-                _t(
-                    __CLASS__ . '.SpecialInstructionsTitle',
-                    'Are there any special instructions we need to be aware of?'
-                )
-            )->setForm($form)
-        );
+        $duplicate_delivery_field = $fields->dataFieldByName('DuplicateDelivery');
+        $instructions_field = TextareaField::create(
+            'SpecialInstructions',
+            _t(
+                __CLASS__ . '.SpecialInstructionsTitle',
+                'Are there any special instructions we need to be aware of?'
+            )
+        )->setForm($form);
 
-        $fields->insertAfter(
-            'DuplicateDelivery',
-            LiteralField::create('SpecialInstructuionsDivider', '<hr/>')
-        );
+        if (empty($duplicate_delivery_field)) {
+            $fields->insertAfter(
+                'BillingFields',
+                $instructions_field
+            );
+        } else {
+            $fields->insertAfter(
+                'DuplicateDelivery',
+                $instructions_field
+            );
+            $fields->insertAfter(
+                'DuplicateDelivery',
+                LiteralField::create('SpecialInstructuionsDivider', '<hr/>')
+            );
+        }
     }
 }
