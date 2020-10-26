@@ -1,0 +1,30 @@
+{
+    "name": "silvercommerce/checkout-special-instructions",
+    "description": "Add a special instructions field to the checkout process, which is then saved to the order",
+      "type": "silverstripe-vendormodule",
+      "homepage": "http://github.com/silvercommerce/checkout-special-instructions",
+      "keywords": [
+          "silverstripe",
+          "commerce",
+          "ecommerce",
+          "checkout"
+      ],
+      "license": "BSD-3-Clause",
+      "authors": [
+          {
+              "name": "ilateral",
+              "email": "info@ilateral.co.uk"
+          }
+      ],
+      "support": {
+          "issues": "http://github.com/silvercommerce/checkout-special-instructions/issues"
+      },
+      "require": {
+          "silvercommerce/checkout": "~1.0"
+      },
+      "autoload": {
+          "psr-4": {
+              "SilverCommerce\\Checkout\\SpecialInstructions\\": "src/"
+          }
+      }
+  }
