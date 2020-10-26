@@ -1,0 +1,11 @@
+---
+Name: checkoutspecialinstructionsconfig
+After:
+  - '#checkoutconfig'
+---
+SilverCommerce\OrdersAdmin\Model\Estimate:
+  extensions:
+    - SilverCommerce\Checkout\SpecialInstructions\EstimateExtension
+SilverCommerce\Checkout\Control\Checkout:
+  extensions:
+    - SilverCommerce\Checkout\SpecialInstructions\CheckoutExtension
